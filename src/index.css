@@ -6,7 +6,22 @@
 
 @layer base {
   body {
-    @apply text-base text-gray-800 font-normal;
+    @apply bg-slate-950 text-base text-white;
+  }
+
+  input,
+  select,
+  textarea,
+  label:has(input[type="file"]) {
+    @apply bg-transparent h-11 px-3.5 py-2.5 border-2 border-white/50 outline-none focus:border-sky-400;
+  }
+
+  option {
+    @apply bg-black;
+  }
+
+  textarea {
+    @apply min-h-60;
   }
 }
 
