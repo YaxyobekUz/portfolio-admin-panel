@@ -92,7 +92,7 @@ const Delete = () => {
                     {/* details */}
                     <div className="w-full space-y-1.5 overflow-hidden">
                       <h3 className="font-semibold line-clamp-1">
-                        {project.title}
+                        {project.title?.en}
                       </h3>
 
                       <p className="line-clamp-1 opacity-70">

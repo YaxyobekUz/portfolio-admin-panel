@@ -12,6 +12,7 @@ const AddProjectForm = () => {
   const storage = getStorage(app);
 
   const [title, setTitle] = useState("");
+  const [titleEn, setTitleEn] = useState("");
   const [type, setType] = useState("website");
   const [loader, setLoader] = useState(false);
   const [link, setLink] = useState("https://");
@@ -20,6 +21,7 @@ const AddProjectForm = () => {
   const [imageFile, setImageFile] = useState(null);
   const [urlType, setUrlType] = useState("website");
   const [description, setDescription] = useState("");
+  const [descriptionEn, setDescriptionEn] = useState("");
   const [githubLink, setGithubLink] = useState("https://github.com/");
 
   // Add project data
@@ -57,12 +59,12 @@ const AddProjectForm = () => {
 
     const projectData = {
       type,
-      title,
       level,
       githubLink,
-      description,
+      title: { uz: title, en: titleEn },
       link: { value: link, type: urlType },
       tags: tags.split(",").map((tag) => tag.trim()),
+      description: { uz: description, en: descriptionEn },
     };
 
     addProject(projectData, imageFile);
@@ -91,24 +93,47 @@ const AddProjectForm = () => {
     >
       {/* Title */}
       <label className="flex flex-col gap-3.5">
-        <span>Title</span>
+        <span>Title (Uzbek)</span>
         <input
           required
           type="text"
           value={title}
-          placeholder="Title"
+          placeholder="Title (Uzbek)"
           onChange={(e) => setTitle(e.target.value)}
+        />
+      </label>
+
+      {/* Title En */}
+      <label className="flex flex-col gap-3.5">
+        <span>Title (English)</span>
+        <input
+          required
+          type="text"
+          value={titleEn}
+          placeholder="Title (English)"
+          onChange={(e) => setTitleEn(e.target.value)}
         />
       </label>
 
       {/* Description */}
       <label className="flex flex-col gap-3.5">
-        <span>Description</span>
+        <span>Description (Uzbek)</span>
         <textarea
           required
           value={description}
-          placeholder="Description"
+          placeholder="Description (Uzbek)"
           onChange={(e) => setDescription(e.target.value)}
+        />
+      </label>
+
+      {/* Description En */}
+      <label className="flex flex-col gap-3.5">
+        <span>Description (English)</span>
+        <textarea
+          required
+          value={descriptionEn}
+          placeholder="Description (English)"
+          onChange={(e) => setDescriptionEn(e.target.value)}
         />
       </label>
 
